@@ -102,7 +102,7 @@ class _NavBarState extends State<NavBar> {
               startLaunchURL("https://play.google.com/store/apps/details?id=com.fuertedevelopers.aapkacare&hl=en&gl=US");
             },
             child: Text(
-              'patient',
+              'Patient',
               style: textTheme.bodyLarge!.apply(color: Colors.white),
             )),
         SizedBox(width: 30.0 * s.customWidth),

@@ -4,9 +4,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fuerteads/Pages/SubScription-Plan/main_subscription_plan.dart';
+import 'package:fuerteads/screens/SubScription-Plan/main_subscription_plan.dart';
 import 'package:fuerteads/widgets/Razorpay.dart';
-import 'package:fuerteads/widgets/textFiled.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,7 +32,8 @@ class _SubscriptionPlanWebState extends State<SubscriptionPlanWeb> {
   Widget build(BuildContext context) {
     var razor = RazorPayIntegration(context);
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(233, 233, 233, 1),
+      // backgroundColor: const Color.fromRGBO(233, 233, 233, 1),
+      backgroundColor: Color.fromRGBO(0, 162, 239, 0.4),
       body: Align(
         alignment: Alignment.center,
         child: Column(
@@ -55,10 +55,15 @@ class _SubscriptionPlanWebState extends State<SubscriptionPlanWeb> {
                     Row(
                       children: [
                         CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Color.fromRGBO(254, 236, 214, 1),
-                          child: Image.asset(height: 35.0, "assets/images/logo.png"),
-                        ),
+                            radius: 30,
+                            backgroundColor: Color.fromRGBO(0, 162, 239, 1),
+                            child: Icon(
+                              Icons.person_outline_sharp,
+                              color: Colors.white,
+                              size: 30,
+                            )
+                            //  Image.asset(height: 35.0, "assets/images/logo.png"),
+                            ),
                         20.widthBox,
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +73,7 @@ class _SubscriptionPlanWebState extends State<SubscriptionPlanWeb> {
                               style: GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w600),
                             ),
                             Text(
-                              "Unlock instant access to all users",
+                              "Unlock instant access to all patients",
                               style: GoogleFonts.poppins(fontSize: 13, fontWeight: FontWeight.w400, color: Color.fromARGB(229, 117, 117, 117)),
                             ),
                           ],
@@ -366,6 +371,21 @@ class _SubscriptionPlanWebState extends State<SubscriptionPlanWeb> {
                                                     ),
                                                     10.heightBox,
                                                     CustomTextField(
+                                                      controller: _pincodeController,
+                                                      hintText: 'Email',
+                                                      icon: Icon(Icons.email),
+                                                      keyboardType: TextInputType.number,
+                                                      validator: (value) {
+                                                        if (value!.isEmpty) {
+                                                          return 'Please enter your Email';
+                                                        } else if (!RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$').hasMatch(value)) {
+                                                          return 'add proper email';
+                                                        }
+                                                        return "null";
+                                                      },
+                                                    ),
+                                                    10.heightBox,
+                                                    CustomTextField(
                                                       controller: _cityController,
                                                       hintText: 'Address',
                                                       icon: Icon(Icons.location_on_rounded),
@@ -388,23 +408,6 @@ class _SubscriptionPlanWebState extends State<SubscriptionPlanWeb> {
                                                           return 'Mobile no. must be 10 digits';
                                                         }
                                                         return null;
-                                                      },
-                                                    ),
-                                                    10.heightBox,
-                                                    CustomTextField(
-                                                      controller: _pincodeController,
-                                                      hintText: 'Pincode',
-                                                      icon: Icon(Icons.pin),
-                                                      keyboardType: TextInputType.number,
-                                                      validator: (value) {
-                                                        if (value!.isEmpty) {
-                                                          return 'Please enter your pincode';
-                                                        } else if (value.length != 6) {
-                                                          return 'Pincode must be 6 digits';
-                                                        } else if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-                                                          return 'Pincode must be a number';
-                                                        }
-                                                        return "null";
                                                       },
                                                     ),
                                                     SizedBox(height: 10),
@@ -438,7 +441,7 @@ class _SubscriptionPlanWebState extends State<SubscriptionPlanWeb> {
                                           child: Container(
                                             height: 40,
                                             decoration: BoxDecoration(
-                                              color: const Color.fromRGBO(60, 97, 229, 1),
+                                              color: Color.fromRGBO(0, 162, 239, 1),
                                               borderRadius: BorderRadius.circular(5.0),
                                             ),
                                             child: Center(

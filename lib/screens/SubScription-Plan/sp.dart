@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fuerteads/Pages/SubScription-Plan/subscriptionPlanMobile.dart';
-import 'package:fuerteads/Pages/SubScription-Plan/subscriptionPlanWeb.dart';
+import 'package:fuerteads/screens/SubScription-Plan/subscriptionPlanMobile.dart';
+import 'package:fuerteads/screens/SubScription-Plan/subscriptionPlanWeb.dart';
 import 'package:fuerteads/responsive.dart';
 
 class SubscriptionPlan extends StatelessWidget {
@@ -13,10 +13,8 @@ class SubscriptionPlan extends StatelessWidget {
         mobile: SubscriptionPlanMobile(),
         tablet: SubscriptionPlanMobile(),
         desktop: SubscriptionPlanWeb(),
-
-        // mobileScreen: SubscriptionPlanMobile(),
-        // webScreen: SubscriptionPlanWeb()
       ),
     );
   }
 }
+

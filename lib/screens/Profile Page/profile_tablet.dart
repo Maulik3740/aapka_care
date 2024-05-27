@@ -6,6 +6,7 @@ import 'package:fuerteads/values/values.dart';
 import 'package:fuerteads/widgets/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ProfileTablet extends StatefulWidget {
   const ProfileTablet({super.key});
@@ -99,9 +100,9 @@ class _ProfileTabletState extends State<ProfileTablet> {
                 //details
                 Positioned(
                   top: 200,
-                  left: MediaQuery.of(context).size.width / 5,
+                  left: MediaQuery.of(context).size.width / 6,
                   child: Container(
-                    width: 530,
+                    width: MediaQuery.of(context).size.width / 1.5, // 530,
                     height: 250,
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
                       BoxShadow(offset: Offset(0, 4), color: const Color.fromARGB(121, 0, 0, 0), spreadRadius: 3, blurRadius: 5)
@@ -166,26 +167,27 @@ class _ProfileTabletState extends State<ProfileTablet> {
                             ),
                           ],
                         ),
+                        Expanded(child: Container()),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             50.heightBox,
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              // padding: EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
                               height: 30,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   customText(text: "Specification:"),
-                                  15.widthBox,
+                                  5.widthBox,
                                   customText(text: "Infectious Diseases "),
                                 ],
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              // padding: EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
                               height: 30,
                               child: Row(
@@ -198,7 +200,7 @@ class _ProfileTabletState extends State<ProfileTablet> {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              // padding: EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
                               height: 30,
                               child: Row(
@@ -242,7 +244,7 @@ class _ProfileTabletState extends State<ProfileTablet> {
                   top: 500,
                   left: MediaQuery.of(context).size.width / 7,
                   child: Container(
-                    width: 600,
+                    width: MediaQuery.of(context).size.width / 1.4, // 600,
                     height: MediaQuery.of(context).size.height,
                     child: ListView.builder(
                       itemCount: 10,
@@ -308,9 +310,8 @@ class customText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AutoSizeText(
       overflow: TextOverflow.ellipsis,
-      maxLines: 3,
       text,
       style: GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 14),
     );

@@ -7,14 +7,14 @@ import 'package:fuerteads/widgets/navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class ProfileWeb extends StatefulWidget {
+  const ProfileWeb({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileWeb> createState() => _ProfileWebState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileWebState extends State<ProfileWeb> {
   @override
   Widget build(BuildContext context) {
     Screen s = Screen(context);
@@ -212,6 +212,13 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
 
+                Positioned(
+                  top: 300,
+                  left: 75,
+                  child: Container(
+                    child: Text("data"),
+                  ),
+                ),
                 //circle photo
                 Positioned(
                   top: 100,

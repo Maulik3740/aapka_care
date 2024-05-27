@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fuerteads/screens/Profile%20Page/Profile.dart';
+import 'package:fuerteads/screens/SubScription-Plan/sp.dart';
+import 'package:fuerteads/screens/Profile%20Page/profile_mobile.dart';
+import 'package:fuerteads/screens/Profile%20Page/profile_tablet.dart';
+import 'package:fuerteads/screens/Profile%20Page/profile_web.dart';
+import 'package:fuerteads/responsive.dart';
+import 'package:fuerteads/screens/homeScreen/findPatient.dart';
 import 'package:fuerteads/screens/homeScreen/homePage.dart';
 import 'package:fuerteads/utils/app_theme.dart' as app_theme;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -25,7 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: app_theme.lightThemeData,
       title: 'AAPKA CARE',
-      home: HomePage(),
+      home: FindPatient(),
     );
   }
 }
