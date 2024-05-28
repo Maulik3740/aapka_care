@@ -102,7 +102,7 @@ class _ProfileWebState extends State<ProfileWeb> {
                   left: 75, // MediaQuery.of(context).size.width / 4,
                   child: Container(
                     width: 350,
-                    height: 450,
+                    height: 350,
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
                       BoxShadow(offset: Offset(0, 4), color: const Color.fromARGB(121, 0, 0, 0), spreadRadius: 3, blurRadius: 5)
                     ]),
@@ -212,13 +212,82 @@ class _ProfileWebState extends State<ProfileWeb> {
                   ),
                 ),
 
+                //Working Time
                 Positioned(
-                  top: 300,
+                  bottom: 30,
                   left: 75,
                   child: Container(
-                    child: Text("data"),
+                    width: 350,
+                    height: 200,
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                      BoxShadow(offset: Offset(0, 4), color: const Color.fromARGB(121, 0, 0, 0), spreadRadius: 3, blurRadius: 5)
+                    ]),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                height: 55,
+                                color: Color.fromARGB(255, 27, 181, 253),
+                                child: Center(
+                                  child: Text(
+                                    "Working Time",
+                                    style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                          height: 30,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customText(text: "Mon - Fri"),
+                              15.widthBox,
+                              customText(text: "7 AM - 10 PM"),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                          height: 30,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customText(text: "Saturday"),
+                              15.widthBox,
+                              customText(text: "9 AM - 8 PM"),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+                          height: 30,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              customText(text: "Sunday"),
+                              15.widthBox,
+                              customText(text: "10 AM - 5 PM"),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+
                 //circle photo
                 Positioned(
                   top: 100,
@@ -237,148 +306,164 @@ class _ProfileWebState extends State<ProfileWeb> {
 
                 //experience
                 Positioned(
-                  bottom: 10,
+                  top: 200,
                   right: 100,
-                  child: Container(
-                    width: 800,
-                    height: 500,
-                    child: ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Row(
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 55,
+                        width: 800,
+                        color: Color.fromARGB(255, 27, 181, 253),
+                        child: Center(
+                          child: Text(
+                            "Experience",
+                            style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                          ),
+                        ),
+                      ),
+                      20.heightBox,
+                      Container(
+                        width: 800,
+                        height: 500,
+                        child: ListView.builder(
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return Column(
                               children: [
-                                Expanded(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      color: Colors.white,
-                                      border: Border.all(color: Colors.black),
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(
-                                          height: 70,
-                                          width: 140,
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black, width: 2),
-                                            borderRadius: BorderRadius.circular(10),
-                                          ),
-                                          child: Image.asset('assets/d3.png', fit: BoxFit.contain),
-                                        ).p12(),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          color: Colors.white,
+                                          border: Border.all(color: Colors.black),
+                                        ),
+                                        child: Row(
                                           children: [
-                                            customText(text: "Sterling Hospital Rajkot"),
-                                            customText(text: "Infectious Diseases"),
-                                            customText(text: "Online Consulation"),
-                                            customText(text: "Dec-2021,March-2023"),
+                                            Container(
+                                              height: 70,
+                                              width: 140,
+                                              padding: EdgeInsets.all(8),
+                                              decoration: BoxDecoration(
+                                                border: Border.all(color: Colors.black, width: 2),
+                                                borderRadius: BorderRadius.circular(10),
+                                              ),
+                                              child: Image.asset('assets/d3.png', fit: BoxFit.contain),
+                                            ).p12(),
+                                            Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                customText(text: "Sterling Hospital Rajkot"),
+                                                customText(text: "Infectious Diseases"),
+                                                customText(text: "Online Consulation"),
+                                                customText(text: "Dec-2021,March-2023"),
+                                              ],
+                                            ),
                                           ],
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
+                                SizedBox(height: 10), // 10.heightBox equivalent
                               ],
-                            ),
-                            SizedBox(height: 10), // 10.heightBox equivalent
-                          ],
-                        );
-                      },
-                    ),
+                            );
+                          },
+                        ),
 
-                    // SingleChildScrollView(
-                    //   scrollDirection: Axis.vertical,
-                    //   child:
-                    //   Column(
-                    //     children: [
-                    //       customText(text: "Practice Experience"),
-                    //       10.heightBox,
-                    //       // ListView.builder(
-                    //       //   itemCount: 10,
-                    //       //   itemBuilder: (context, index) {
-                    //       //     return Column(
-                    //       //       children: [
-                    //       //         Row(
-                    //       //           children: [
-                    //       //             Expanded(
-                    //       //               child: Container(
-                    //       //                 decoration: BoxDecoration(
-                    //       //                   borderRadius: BorderRadius.circular(5),
-                    //       //                   color: Colors.white,
-                    //       //                   border: Border.all(color: Colors.black),
-                    //       //                 ),
-                    //       //                 child: Row(
-                    //       //                   children: [
-                    //       //                     Container(
-                    //       //                       height: 70,
-                    //       //                       width: 140,
-                    //       //                       padding: EdgeInsets.all(8),
-                    //       //                       decoration: BoxDecoration(
-                    //       //                         border: Border.all(color: Colors.black, width: 2),
-                    //       //                         borderRadius: BorderRadius.circular(10),
-                    //       //                       ),
-                    //       //                       child: Image.asset('assets/d3.png', fit: BoxFit.contain),
-                    //       //                     ).p12(),
-                    //       //                     Column(
-                    //       //                       crossAxisAlignment: CrossAxisAlignment.start,
-                    //       //                       children: [
-                    //       //                         customText(text: "Sterling Hospital Rajkot"),
-                    //       //                         customText(text: "Infectious Diseases"),
-                    //       //                         customText(text: "Online Consulation"),
-                    //       //                         customText(text: "Dec-2021,March-2023"),
-                    //       //                       ],
-                    //       //                     ),
-                    //       //                   ],
-                    //       //                 ),
-                    //       //               ),
-                    //       //             ),
-                    //       //           ],
-                    //       //         ),
-                    //       //         SizedBox(height: 10), // 10.heightBox equivalent
-                    //       //       ],
-                    //       //     );
-                    //       //   },
-                    //       // ),
+                        // SingleChildScrollView(
+                        //   scrollDirection: Axis.vertical,
+                        //   child:
+                        //   Column(
+                        //     children: [
+                        //       customText(text: "Practice Experience"),
+                        //       10.heightBox,
+                        //       // ListView.builder(
+                        //       //   itemCount: 10,
+                        //       //   itemBuilder: (context, index) {
+                        //       //     return Column(
+                        //       //       children: [
+                        //       //         Row(
+                        //       //           children: [
+                        //       //             Expanded(
+                        //       //               child: Container(
+                        //       //                 decoration: BoxDecoration(
+                        //       //                   borderRadius: BorderRadius.circular(5),
+                        //       //                   color: Colors.white,
+                        //       //                   border: Border.all(color: Colors.black),
+                        //       //                 ),
+                        //       //                 child: Row(
+                        //       //                   children: [
+                        //       //                     Container(
+                        //       //                       height: 70,
+                        //       //                       width: 140,
+                        //       //                       padding: EdgeInsets.all(8),
+                        //       //                       decoration: BoxDecoration(
+                        //       //                         border: Border.all(color: Colors.black, width: 2),
+                        //       //                         borderRadius: BorderRadius.circular(10),
+                        //       //                       ),
+                        //       //                       child: Image.asset('assets/d3.png', fit: BoxFit.contain),
+                        //       //                     ).p12(),
+                        //       //                     Column(
+                        //       //                       crossAxisAlignment: CrossAxisAlignment.start,
+                        //       //                       children: [
+                        //       //                         customText(text: "Sterling Hospital Rajkot"),
+                        //       //                         customText(text: "Infectious Diseases"),
+                        //       //                         customText(text: "Online Consulation"),
+                        //       //                         customText(text: "Dec-2021,March-2023"),
+                        //       //                       ],
+                        //       //                     ),
+                        //       //                   ],
+                        //       //                 ),
+                        //       //               ),
+                        //       //             ),
+                        //       //           ],
+                        //       //         ),
+                        //       //         SizedBox(height: 10), // 10.heightBox equivalent
+                        //       //       ],
+                        //       //     );
+                        //       //   },
+                        //       // ),
 
-                    //       // Row(
-                    //       //   children: [
-                    //       //     Expanded(
-                    //       //       child: Container(
-                    //       //         decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.white, border: Border.all(color: Colors.black)),
-                    //       //         child: Row(
-                    //       //           children: [
-                    //       //             Container(
-                    //       //               height: 70,
-                    //       //               width: 140,
-                    //       //               padding: EdgeInsets.all(8),
-                    //       //               decoration: BoxDecoration(
-                    //       //                 border: Border.all(color: Colors.black, width: 2),
-                    //       //                 borderRadius: BorderRadius.circular(10),
-                    //       //               ),
-                    //       //               child: Image.asset("assets/hlogo.png", fit: BoxFit.contain),
-                    //       //             ).p12(),
-                    //       //             Column(
-                    //       //               crossAxisAlignment: CrossAxisAlignment.start,
-                    //       //               children: [
-                    //       //                 customText(text: "Sterling Hospital Rajkot"),
-                    //       //                 customText(text: "Infectious Diseases"),
-                    //       //                 customText(text: "Online Consulation"),
-                    //       //                 customText(text: "Dec-2021,March-2023"),
-                    //       //               ],
-                    //       //             )
-                    //       //           ],
-                    //       //         ),
-                    //       //       ),
-                    //       //     ),
-                    //       //   ],
-                    //       // ),
-                    //       // 10.heightBox,
-                    //     ],
-                    //   ).px12(),
-                    // ),
+                        //       // Row(
+                        //       //   children: [
+                        //       //     Expanded(
+                        //       //       child: Container(
+                        //       //         decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.white, border: Border.all(color: Colors.black)),
+                        //       //         child: Row(
+                        //       //           children: [
+                        //       //             Container(
+                        //       //               height: 70,
+                        //       //               width: 140,
+                        //       //               padding: EdgeInsets.all(8),
+                        //       //               decoration: BoxDecoration(
+                        //       //                 border: Border.all(color: Colors.black, width: 2),
+                        //       //                 borderRadius: BorderRadius.circular(10),
+                        //       //               ),
+                        //       //               child: Image.asset("assets/hlogo.png", fit: BoxFit.contain),
+                        //       //             ).p12(),
+                        //       //             Column(
+                        //       //               crossAxisAlignment: CrossAxisAlignment.start,
+                        //       //               children: [
+                        //       //                 customText(text: "Sterling Hospital Rajkot"),
+                        //       //                 customText(text: "Infectious Diseases"),
+                        //       //                 customText(text: "Online Consulation"),
+                        //       //                 customText(text: "Dec-2021,March-2023"),
+                        //       //               ],
+                        //       //             )
+                        //       //           ],
+                        //       //         ),
+                        //       //       ),
+                        //       //     ),
+                        //       //   ],
+                        //       // ),
+                        //       // 10.heightBox,
+                        //     ],
+                        //   ).px12(),
+                        // ),
+                      ),
+                    ],
                   ),
                 )
               ],

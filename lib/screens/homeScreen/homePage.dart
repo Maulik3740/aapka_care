@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   String test = '';
   String? data;
   String? _selectedExperience;
-  final String token = '123456789';
   bool _isListViewVisible = false;
   TextEditingController _locationController = TextEditingController();
 
@@ -185,421 +184,427 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.5,
-                  height: 400,
-                  child: Stack(
+            s.isMobile
+                ? Container()
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                          width: MediaQuery.of(context).size.width / 1.5,
-                          height: 400,
-
-                          // decoration: BoxDecoration(
-                          //   gradient: LinearGradient(colors: [
-                          //     Color(0xFF2ecbe9),
-                          //     Color.fromARGB(255, 48, 145, 241),
-                          //   ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                          //   borderRadius: BorderRadius.circular(15.0),
-                          // ),
-                          child: Image.asset(
-                            'assets/i7.jpg',
-                            fit: BoxFit.fill,
-                          )
-                          // Stack(
-                          //   children: [
-                          //     generatePositionedCircle(
-                          //       left: 60,
-                          //       top: 85,
-                          //       radius: 45,
-                          //       imagePath: 'assets/d8.png',
-                          //     ),
-                          //     generatePositionedCircle(
-                          //       left: 190,
-                          //       top: 12,
-                          //       radius: 33,
-                          //       imagePath: 'assets/d4.png',
-                          //     ),
-                          //     generatePositionedCircle(
-                          //       left: 300,
-                          //       top: 70,
-                          //       radius: 65,
-                          //       imagePath: 'assets/d3.png',
-                          //     ),
-                          //     generatePositionedCircle(
-                          //       left: 450,
-                          //       top: 10,
-                          //       radius: 32,
-                          //       imagePath: 'assets/n2.png',
-                          //     ),
-                          //     generatePositionedCircle(
-                          //       left: 580,
-                          //       top: 60,
-                          //       radius: 45,
-                          //       imagePath: 'assets/d3.png',
-                          //     ),
-                          //     generatePositionedCircle(
-                          //       left: 760,
-                          //       top: 100,
-                          //       radius: 50,
-                          //       imagePath: 'assets/d9.png',
-                          //     ),
-                          //     generatePositionedCircle(
-                          //       left: 880,
-                          //       top: 15,
-                          //       radius: 35,
-                          //       imagePath: 'assets/d3.png',
-                          //     ),
-                          //     Positioned(
-                          //       top: 220,
-                          //       left: MediaQuery.of(context).size.width / 4.5,
-                          //       child: Text(
-                          //         "Search For your Doctor",
-                          //         style: GoogleFonts.poppins(fontSize: 28, color: Colors.black, fontWeight: FontWeight.w600),
-                          //       ),
-                          //     ),
-                          //     Positioned(
-                          //       top: 260,
-                          //       left: MediaQuery.of(context).size.width / 5.6,
-                          //       child: Text(
-                          //         "When you are searching for a Doctor, there are a few things you can do to",
-                          //         style: GoogleFonts.poppins(fontSize: 12, color: Colors.black, fontWeight: FontWeight.w400),
-                          //       ),
-                          //     ),
-                          //     Positioned(
-                          //       top: 275,
-                          //       left: MediaQuery.of(context).size.width / 3.8,
-                          //       child: Text(
-                          //         "get the most out of your search ",
-                          //         style: GoogleFonts.poppins(fontSize: 12, color: Colors.black, fontWeight: FontWeight.w400),
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                          ).py20(),
-
                       Container(
                         width: MediaQuery.of(context).size.width / 1.5,
                         height: 400,
-                        color: const Color.fromARGB(53, 0, 0, 0),
-                      ).py20(),
-
-                      // Job Search Bar
-                      Positioned(
-                        bottom: 0,
-                        left: s.width / 15,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        child: Stack(
                           children: [
                             Container(
-                              height: 55,
-                              width: MediaQuery.of(context).size.width / 1.9,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 6,
-                                    offset: Offset(0, 4),
-                                    color: Colors.grey.shade400,
-                                  )
-                                ],
-                                borderRadius: BorderRadius.horizontal(
-                                  left: Radius.circular(50.0),
-                                  right: Radius.circular(50.0),
-                                ),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  // Padding(
-                                  //   padding: EdgeInsets.only(left: 10 * s.customWidth),
-                                  //   child: CircleAvatar(
-                                  //     foregroundColor: Colors.white,
-                                  //     backgroundColor: Color.fromARGB(255, 27, 181, 253),
-                                  //     child: Icon(
-                                  //       Icons.search,
-                                  //       size: 20.0,
-                                  //     ),
-                                  //     radius: 19,
-                                  //   ),
-                                  // ),
-                                  Expanded(
-                                    child: Stack(
-                                      children: [
-                                        Theme(
-                                          data: ThemeData(focusColor: Color.fromARGB(255, 53, 189, 252), splashColor: Colors.transparent),
-                                          child: DropdownButtonFormField<String>(
-                                            value: _selectedExperience,
-                                            borderRadius: BorderRadius.circular(10),
-                                            onChanged: (String? newValue) {
-                                              setState(() {
-                                                _selectedExperience = newValue;
-                                              });
-                                            },
-                                            items: _experiences
-                                                .map<DropdownMenuItem<String>>(
-                                                  (String value) => DropdownMenuItem<String>(
-                                                    value: value,
-                                                    child: Text(
-                                                      value,
-                                                      style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                )
-                                                .toList(),
-                                            decoration: InputDecoration(
-                                              fillColor: Colors.white,
-                                              focusColor: Colors.white,
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                                                borderRadius: BorderRadius.circular(30),
-                                              ),
-                                              border: OutlineInputBorder(
-                                                borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                                                borderRadius: BorderRadius.circular(30),
-                                              ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(color: Colors.white, width: 2.0),
-                                                borderRadius: BorderRadius.circular(30),
-                                              ),
-                                              hintText: 'What you need',
-                                              hintStyle: GoogleFonts.lato(
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 16.0,
-                                              ),
-                                            ),
-                                            padding: EdgeInsets.only(left: 40),
-                                            style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
-                                          ),
-                                        ),
-                                        CircleAvatar(
-                                          foregroundColor: Colors.white,
-                                          backgroundColor: Color.fromARGB(255, 27, 181, 253),
-                                          child: Icon(
-                                            Icons.search,
-                                            size: 20.0,
-                                          ),
-                                          radius: 19,
-                                        ).pSymmetric(v: 8, h: 5),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 30 * s.customHeight,
-                                    child: VerticalDivider(
-                                      color: Colors.grey,
-                                      thickness: 2,
-                                    ),
-                                  ),
-                                  Container(
-                                      height: 40 * s.customHeight,
-                                      width: 170 * s.customWidth,
-                                      child: Center(
-                                        child: Padding(
-                                          padding: EdgeInsets.only(top: 3 * s.customHeight, bottom: 8),
-                                          child: TextField(
-                                            onChanged: (value) {
-                                              setState(() {
-                                                _isListViewVisible = value.isNotEmpty;
-                                              });
-                                            },
-                                            controller: _locationController,
-                                            cursorColor: Colors.black,
-                                            showCursor: true,
-                                            decoration: InputDecoration.collapsed(
-                                              fillColor: Colors.white,
-                                              focusColor: Colors.white,
-                                              hintText: 'Enter Location',
-                                              hintStyle: GoogleFonts.lato(
-                                                color: Colors.grey,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
-                                          ),
-                                        ),
-                                      )),
+                                width: MediaQuery.of(context).size.width / 1.5,
+                                height: 400,
 
-                                  InkWell(
-                                    onTap: () {
-                                      if (_selectedExperience != null && _locationController.text.isNotEmpty) {
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => ResultPage(
-                                                  experience: _selectedExperience.toString(),
-                                                  location: _locationController.text,
-                                                )));
-                                      } else {
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(
-                                            duration: Duration(milliseconds: 500),
-                                            content: Text('Please fill in all fields before searching.'),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                    child: Container(
-                                      height: 40 * s.customHeight,
-                                      width: 110 * s.customWidth,
-                                      decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(30)),
-                                      child: Center(
-                                        child: Text(
-                                          "Search",
-                                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
-                                        ),
+                                // decoration: BoxDecoration(
+                                //   gradient: LinearGradient(colors: [
+                                //     Color(0xFF2ecbe9),
+                                //     Color.fromARGB(255, 48, 145, 241),
+                                //   ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                                //   borderRadius: BorderRadius.circular(15.0),
+                                // ),
+                                child: Image.asset(
+                                  'assets/i7.jpg',
+                                  fit: BoxFit.fill,
+                                )
+                                // Stack(
+                                //   children: [
+                                //     generatePositionedCircle(
+                                //       left: 60,
+                                //       top: 85,
+                                //       radius: 45,
+                                //       imagePath: 'assets/d8.png',
+                                //     ),
+                                //     generatePositionedCircle(
+                                //       left: 190,
+                                //       top: 12,
+                                //       radius: 33,
+                                //       imagePath: 'assets/d4.png',
+                                //     ),
+                                //     generatePositionedCircle(
+                                //       left: 300,
+                                //       top: 70,
+                                //       radius: 65,
+                                //       imagePath: 'assets/d3.png',
+                                //     ),
+                                //     generatePositionedCircle(
+                                //       left: 450,
+                                //       top: 10,
+                                //       radius: 32,
+                                //       imagePath: 'assets/n2.png',
+                                //     ),
+                                //     generatePositionedCircle(
+                                //       left: 580,
+                                //       top: 60,
+                                //       radius: 45,
+                                //       imagePath: 'assets/d3.png',
+                                //     ),
+                                //     generatePositionedCircle(
+                                //       left: 760,
+                                //       top: 100,
+                                //       radius: 50,
+                                //       imagePath: 'assets/d9.png',
+                                //     ),
+                                //     generatePositionedCircle(
+                                //       left: 880,
+                                //       top: 15,
+                                //       radius: 35,
+                                //       imagePath: 'assets/d3.png',
+                                //     ),
+                                //     Positioned(
+                                //       top: 220,
+                                //       left: MediaQuery.of(context).size.width / 4.5,
+                                //       child: Text(
+                                //         "Search For your Doctor",
+                                //         style: GoogleFonts.poppins(fontSize: 28, color: Colors.black, fontWeight: FontWeight.w600),
+                                //       ),
+                                //     ),
+                                //     Positioned(
+                                //       top: 260,
+                                //       left: MediaQuery.of(context).size.width / 5.6,
+                                //       child: Text(
+                                //         "When you are searching for a Doctor, there are a few things you can do to",
+                                //         style: GoogleFonts.poppins(fontSize: 12, color: Colors.black, fontWeight: FontWeight.w400),
+                                //       ),
+                                //     ),
+                                //     Positioned(
+                                //       top: 275,
+                                //       left: MediaQuery.of(context).size.width / 3.8,
+                                //       child: Text(
+                                //         "get the most out of your search ",
+                                //         style: GoogleFonts.poppins(fontSize: 12, color: Colors.black, fontWeight: FontWeight.w400),
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
+                                ).py20(),
+
+                            Container(
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              height: 400,
+                              color: const Color.fromARGB(53, 0, 0, 0),
+                            ).py20(),
+
+                            // Job Search Bar
+                            Positioned(
+                              bottom: 0,
+                              left: s.width / 15,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    height: 55,
+                                    width: MediaQuery.of(context).size.width / 1.9,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 6,
+                                          offset: Offset(0, 4),
+                                          color: Colors.grey.shade400,
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.horizontal(
+                                        left: Radius.circular(50.0),
+                                        right: Radius.circular(50.0),
                                       ),
                                     ),
-                                  ).px16()
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        // Padding(
+                                        //   padding: EdgeInsets.only(left: 10 * s.customWidth),
+                                        //   child: CircleAvatar(
+                                        //     foregroundColor: Colors.white,
+                                        //     backgroundColor: Color.fromARGB(255, 27, 181, 253),
+                                        //     child: Icon(
+                                        //       Icons.search,
+                                        //       size: 20.0,
+                                        //     ),
+                                        //     radius: 19,
+                                        //   ),
+                                        // ),
+                                        Expanded(
+                                          child: Stack(
+                                            children: [
+                                              Theme(
+                                                data: ThemeData(focusColor: Color.fromARGB(255, 53, 189, 252), splashColor: Colors.transparent),
+                                                child: DropdownButtonFormField<String>(
+                                                  value: _selectedExperience,
+                                                  borderRadius: BorderRadius.circular(10),
+                                                  onChanged: (String? newValue) {
+                                                    setState(() {
+                                                      _selectedExperience = newValue;
+                                                    });
+                                                  },
+                                                  items: _experiences
+                                                      .map<DropdownMenuItem<String>>(
+                                                        (String value) => DropdownMenuItem<String>(
+                                                          value: value,
+                                                          child: Text(
+                                                            value,
+                                                            style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
+                                                          ),
+                                                        ),
+                                                      )
+                                                      .toList(),
+                                                  decoration: InputDecoration(
+                                                    fillColor: Colors.white,
+                                                    focusColor: Colors.white,
+                                                    focusedBorder: OutlineInputBorder(
+                                                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                                                      borderRadius: BorderRadius.circular(30),
+                                                    ),
+                                                    border: OutlineInputBorder(
+                                                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                                                      borderRadius: BorderRadius.circular(30),
+                                                    ),
+                                                    enabledBorder: OutlineInputBorder(
+                                                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                                                      borderRadius: BorderRadius.circular(30),
+                                                    ),
+                                                    hintText: 'What you need',
+                                                    hintStyle: GoogleFonts.lato(
+                                                      color: Colors.grey,
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize: 16.0,
+                                                    ),
+                                                  ),
+                                                  padding: EdgeInsets.only(left: 40),
+                                                  style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
+                                                ),
+                                              ),
+                                              CircleAvatar(
+                                                foregroundColor: Colors.white,
+                                                backgroundColor: Color.fromARGB(255, 27, 181, 253),
+                                                child: Icon(
+                                                  Icons.search,
+                                                  size: 20.0,
+                                                ),
+                                                radius: 19,
+                                              ).pSymmetric(v: 8, h: 5),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 30 * s.customHeight,
+                                          child: VerticalDivider(
+                                            color: Colors.grey,
+                                            thickness: 2,
+                                          ),
+                                        ),
+                                        Container(
+                                            height: 40 * s.customHeight,
+                                            width: 170 * s.customWidth,
+                                            child: Center(
+                                              child: Padding(
+                                                padding: EdgeInsets.only(top: 3 * s.customHeight, bottom: 8),
+                                                child: TextField(
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      _isListViewVisible = value.isNotEmpty;
+                                                    });
+                                                  },
+                                                  controller: _locationController,
+                                                  cursorColor: Colors.black,
+                                                  showCursor: true,
+                                                  decoration: InputDecoration.collapsed(
+                                                    fillColor: Colors.white,
+                                                    focusColor: Colors.white,
+                                                    hintText: 'Enter Location',
+                                                    hintStyle: GoogleFonts.lato(
+                                                      color: Colors.grey,
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize: 15.0,
+                                                    ),
+                                                  ),
+                                                  style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
+                                                ),
+                                              ),
+                                            )),
+
+                                        InkWell(
+                                          onTap: () {
+                                            if (_selectedExperience != null && _locationController.text.isNotEmpty) {
+                                              Navigator.of(context).push(MaterialPageRoute(
+                                                  builder: (context) => ResultPage(
+                                                        experience: _selectedExperience.toString(),
+                                                        location: _locationController.text,
+                                                      )));
+                                            } else {
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                SnackBar(
+                                                  duration: Duration(milliseconds: 500),
+                                                  content: Text('Please fill in all fields before searching.'),
+                                                ),
+                                              );
+                                            }
+                                          },
+                                          child: Container(
+                                            height: 40 * s.customHeight,
+                                            width: 110 * s.customWidth,
+                                            decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(30)),
+                                            child: Center(
+                                              child: Text(
+                                                "Search",
+                                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                                              ),
+                                            ),
+                                          ),
+                                        ).px16()
+                                      ],
+                                    ).px8(),
+                                  ),
                                 ],
-                              ).px8(),
+                              ),
                             ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-            // SizedBox(
-            //   height: 60 * s.customHeight,
-            // ),
-            // Container(
-            //   decoration: BoxDecoration(
-            //     color: Colors.white,
-            //     boxShadow: [
-            //       BoxShadow(
-            //         blurRadius: 6,
-            //         offset: Offset(0, 4),
-            //         color: Colors.grey.shade400,
-            //       )
-            //     ],
-            //   ),
-            //   child: Row(
-            //     crossAxisAlignment: CrossAxisAlignment.center,
-            //     children: [
-            //       Theme(
-            //         data: ThemeData(focusColor: Color.fromARGB(255, 53, 189, 252), splashColor: Colors.transparent),
-            //         child: DropdownButtonFormField<String>(
-            //           value: _selectedExperience,
-            //           borderRadius: BorderRadius.circular(10),
-            //           onChanged: (String? newValue) {
-            //             setState(() {
-            //               _selectedExperience = newValue;
-            //             });
-            //           },
-            //           items: _experiences
-            //               .map<DropdownMenuItem<String>>(
-            //                 (String value) => DropdownMenuItem<String>(
-            //                   value: value,
-            //                   child: Text(
-            //                     value,
-            //                     style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
-            //                   ),
-            //                 ),
-            //               )
-            //               .toList(),
-            //           decoration: InputDecoration(
-            //             fillColor: Colors.white,
-            //             focusColor: Colors.white,
-            //             focusedBorder: OutlineInputBorder(
-            //               borderSide: const BorderSide(color: Colors.white, width: 2.0),
-            //               borderRadius: BorderRadius.circular(30),
-            //             ),
-            //             border: OutlineInputBorder(
-            //               borderSide: const BorderSide(color: Colors.white, width: 2.0),
-            //               borderRadius: BorderRadius.circular(30),
-            //             ),
-            //             enabledBorder: OutlineInputBorder(
-            //               borderSide: const BorderSide(color: Colors.white, width: 2.0),
-            //               borderRadius: BorderRadius.circular(30),
-            //             ),
-            //             hintText: 'What you need',
-            //             hintStyle: GoogleFonts.lato(
-            //               color: Colors.grey,
-            //               fontWeight: FontWeight.w600,
-            //               fontSize: 14.0,
-            //             ),
-            //           ),
-            //           // padding: EdgeInsets.only(left: 40),
-            //           style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
-            //         ),
-            //       ).w(150),
-            //       SizedBox(
-            //         height: 30 * s.customHeight,
-            //         child: VerticalDivider(
-            //           color: Colors.grey,
-            //           thickness: 2,
-            //         ),
-            //       ),
-            //       Expanded(
-            //         child: Container(
-            //           height: 40 * s.customHeight,
-            //           width: 170 * s.customWidth,
-            //           child: Center(
-            //             child: Padding(
-            //               padding: EdgeInsets.only(top: 3 * s.customHeight, bottom: 8),
-            //               child: TextField(
-            //                 onChanged: (value) {
-            //                   setState(() {
-            //                     _isListViewVisible = value.isNotEmpty;
-            //                   });
-            //                 },
-            //                 controller: _locationController,
-            //                 cursorColor: Colors.black,
-            //                 showCursor: true,
-            //                 decoration: InputDecoration.collapsed(
-            //                   fillColor: Colors.white,
-            //                   focusColor: Colors.white,
-            //                   hintText: 'Enter Location',
-            //                   hintStyle: GoogleFonts.lato(
-            //                     color: Colors.grey,
-            //                     fontWeight: FontWeight.w600,
-            //                     fontSize: 15.0,
-            //                   ),
-            //                 ),
-            //                 style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
-            //               ),
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //       InkWell(
-            //         onTap: () {
-            //           if (_selectedExperience != null && _locationController.text.isNotEmpty) {
-            //             Navigator.of(context).push(MaterialPageRoute(
-            //                 builder: (context) => ResultPage(
-            //                       experience: _selectedExperience.toString(),
-            //                       location: _locationController.text,
-            //                     )));
-            //           } else {
-            //             ScaffoldMessenger.of(context).showSnackBar(
-            //               SnackBar(
-            //                 duration: Duration(milliseconds: 500),
-            //                 content: Text('Please fill in all fields before searching.'),
-            //               ),
-            //             );
-            //           }
-            //         },
-            //         child: Container(
-            //           height: 40 * s.customHeight,
-            //           width: 60,
-            //           decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(30)),
-            //           child: Center(
-            //             child: Text(
-            //               "Search",
-            //               style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10),
-            //             ),
-            //           ),
-            //         ),
-            //       ).px16(),
-            //     ],
-            //   ).px8(),
-            // ),
-
+            s.isMobile
+                ? Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 4,
+                    child: Image.asset(
+                      'assets/i7.jpg',
+                      fit: BoxFit.fill,
+                    )).py2().px2()
+                : Container(),
+            s.isMobile
+                ? Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 6,
+                          offset: Offset(0, 4),
+                          color: Colors.grey.shade400,
+                        )
+                      ],
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Theme(
+                          data: ThemeData(focusColor: Color.fromARGB(255, 53, 189, 252), splashColor: Colors.transparent),
+                          child: DropdownButtonFormField<String>(
+                            value: _selectedExperience,
+                            borderRadius: BorderRadius.circular(10),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _selectedExperience = newValue;
+                              });
+                            },
+                            items: _experiences
+                                .map<DropdownMenuItem<String>>(
+                                  (String value) => DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(
+                                      value,
+                                      style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              focusColor: Colors.white,
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(color: Colors.transparent, width: 2.0),
+                              ),
+                              border: OutlineInputBorder(
+                                borderSide: const BorderSide(color: Colors.transparent, width: 2.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(color: Colors.transparent, width: 2.0),
+                              ),
+                              hintText: 'What you need',
+                              hintStyle: GoogleFonts.lato(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14.0,
+                              ),
+                            ),
+                            // padding: EdgeInsets.only(left: 40),
+                            style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
+                          ),
+                        ).w(150),
+                        SizedBox(
+                          height: 30 * s.customHeight,
+                          child: VerticalDivider(
+                            color: Colors.grey,
+                            thickness: 2,
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 40 * s.customHeight,
+                            width: 170 * s.customWidth,
+                            child: Center(
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 3 * s.customHeight, bottom: 8),
+                                child: TextField(
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _isListViewVisible = value.isNotEmpty;
+                                    });
+                                  },
+                                  controller: _locationController,
+                                  cursorColor: Colors.black,
+                                  showCursor: true,
+                                  decoration: InputDecoration.collapsed(
+                                    fillColor: Colors.white,
+                                    focusColor: Colors.white,
+                                    hintText: 'Enter Location',
+                                    hintStyle: GoogleFonts.lato(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15.0,
+                                    ),
+                                  ),
+                                  style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            if (_selectedExperience != null && _locationController.text.isNotEmpty) {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ResultPage(
+                                        experience: _selectedExperience.toString(),
+                                        location: _locationController.text,
+                                      )));
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  duration: Duration(milliseconds: 500),
+                                  content: Text('Please fill in all fields before searching.'),
+                                ),
+                              );
+                            }
+                          },
+                          child: Container(
+                            height: 40 * s.customHeight,
+                            width: 60,
+                            decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(30)),
+                            child: Center(
+                              child: Text(
+                                "Search",
+                                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10),
+                              ),
+                            ),
+                          ),
+                        ).px16(),
+                      ],
+                    ).px8(),
+                  ).px8()
+                : Container(),
             Visibility(
               visible: _isListViewVisible,
               child: Container(
@@ -620,15 +625,65 @@ class _HomePageState extends State<HomePage> {
                             });
                           },
                           child: ListTile(
-                            leading: Icon(Icons.location_on_rounded),
+                            leading: Icon(
+                              Icons.location_on_rounded,
+                              size: 20,
+                            ),
                             title: Text(
                               listOfLocation[index]["description"],
-                              style: GoogleFonts.lato(color: Colors.black, fontSize: 16.0, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.lato(color: Colors.black, fontSize: s.isMobile ? 14 : 16.0, fontWeight: FontWeight.bold),
                             ).pSymmetric(v: 5),
                           ),
                         );
                       }),
                 ),
+              ),
+            ),
+            SizedBox(
+              height: 60 * s.customHeight,
+            ),
+            CarouselSlider(
+              items: sliderTexts.map((text) {
+                int index = sliderTexts.indexOf(text);
+                return Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    color: myColor[index],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AutoSizeText(
+                          text,
+                          style: GoogleFonts.roboto(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: s.isMobile ? 18 : 40,
+                          ),
+                        ),
+                        SizedBox(height: 10 * s.customHeight),
+                        AutoSizeText(
+                          sliderSubTexts[index],
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: s.isMobile ? 10 : 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }).toList(),
+              options: CarouselOptions(
+                height: 150 * s.customHeight, // Adjust height as needed
+                enableInfiniteScroll: true, // Allows infinite scrolling
+                autoPlay: true, // Automatically scroll items
+                autoPlayInterval: Duration(seconds: 3), // Set auto-play interval
+                autoPlayAnimationDuration: Duration(milliseconds: 800), // Animation duration
+                autoPlayCurve: Curves.fastOutSlowIn, // Animation curve
+                // enlargeCenterPage: true, // Enlarge the centered item
+                scrollDirection: Axis.horizontal, // Set scroll direction
               ),
             ),
             SizedBox(

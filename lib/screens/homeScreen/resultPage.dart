@@ -3,10 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fuerteads/screens/Profile%20Page/Profile.dart';
 import 'package:fuerteads/screens/SubScription-Plan/sp.dart';
-import 'package:fuerteads/screens/Profile%20Page/profile_mobile.dart';
-import 'package:fuerteads/screens/Profile%20Page/profile_tablet.dart';
-import 'package:fuerteads/screens/Profile%20Page/profile_web.dart';
-import 'package:fuerteads/responsive.dart';
 import 'package:fuerteads/screens/homeScreen/findPatient.dart';
 import 'package:fuerteads/values/screen.dart';
 import 'package:fuerteads/values/values.dart';
@@ -194,7 +190,7 @@ class _ResultPageState extends State<ResultPage> {
               child: Container(
                 height: 80, //size.height * 0.1,
                 width: 1492,
-                decoration: BoxDecoration(color: Color.fromARGB(255, 75, 196, 252), borderRadius: BorderRadius.circular(12)),
+                decoration: BoxDecoration(color: Color.fromRGBO(249, 249, 249, 1), border: Border.all(color: Color.fromARGB(42, 0, 0, 0)), borderRadius: BorderRadius.circular(10)),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -206,7 +202,7 @@ class _ResultPageState extends State<ResultPage> {
                       width: size.width > 1000 ? null : 100,
                       child: AutoSizeText(
                         widget.experience, //"Driving Jobs",
-                        style: GoogleFonts.aBeeZee(fontSize: 15, color: white),
+                        style: GoogleFonts.aBeeZee(fontSize: 15, color: black),
                       ),
                     ),
                     SizedBox(
@@ -237,7 +233,7 @@ class _ResultPageState extends State<ResultPage> {
                         child: AutoSizeText(
                           overflow: TextOverflow.ellipsis,
                           widget.location,
-                          style: GoogleFonts.aBeeZee(fontSize: 15, color: white),
+                          style: GoogleFonts.aBeeZee(fontSize: 15, color: black),
                         ),
                       ),
                     ),
@@ -315,21 +311,21 @@ class _ResultPageState extends State<ResultPage> {
                                 children: [
                                   Text(
                                     "\₹${_values.start.round()}",
-                                    style: GoogleFonts.poppins(fontSize: 15, color: white, fontWeight: FontWeight.bold),
+                                    style: GoogleFonts.poppins(fontSize: 15, color: black, fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     " Doctor Fees",
-                                    style: GoogleFonts.poppins(color: white, fontSize: 16, fontWeight: FontWeight.w500),
+                                    style: GoogleFonts.poppins(color: black, fontSize: 16, fontWeight: FontWeight.w500),
                                   ),
                                   Text(
                                     "\₹${_values.end.round()}",
-                                    style: GoogleFonts.poppins(fontSize: 15, color: white, fontWeight: FontWeight.bold),
+                                    style: GoogleFonts.poppins(fontSize: 15, color: black, fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ).w(300),
                               RangeSlider(
                                 values: _values,
-                                activeColor: Colors.black,
+                                activeColor: Color.fromARGB(255, 27, 181, 253),
                                 onChanged: (values) {
                                   setState(() {
                                     _values = values;
@@ -355,7 +351,7 @@ class _ResultPageState extends State<ResultPage> {
                         child: Container(
                           height: 42 * s.customHeight,
                           width: s.isDesktop ? 100 * s.customWidth : 100,
-                          decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(12)),
+                          decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(12)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -392,7 +388,7 @@ class _ResultPageState extends State<ResultPage> {
                         child: Container(
                           height: 42 * s.customHeight,
                           width: s.isDesktop ? 100 * s.customWidth : 100,
-                          decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(12)),
+                          decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(12)),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -653,7 +649,7 @@ class _ResultPageState extends State<ResultPage> {
           fillColor: Colors.transparent,
           hintText: "Select your Experience",
           hintStyle: GoogleFonts.poppins(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
@@ -668,7 +664,7 @@ class _ResultPageState extends State<ResultPage> {
               alignment: Alignment.center,
               child: Text(
                 item,
-                style: GoogleFonts.poppins(fontSize: 14.0, fontWeight: FontWeight.w500, color: Colors.white),
+                style: GoogleFonts.poppins(fontSize: 14.0, fontWeight: FontWeight.w500, color: Colors.black),
               ).pOnly(top: 4),
             ),
           );
@@ -677,10 +673,10 @@ class _ResultPageState extends State<ResultPage> {
         iconSize: 30,
         icon: Icon(
           Icons.arrow_drop_down,
-          color: Colors.white,
+          color: Colors.black,
           // size: 30,
         ).pOnly(top: 2),
-        dropdownColor: const Color.fromARGB(214, 0, 0, 0),
+        dropdownColor: Color.fromARGB(213, 242, 242, 242),
       ),
     );
   }
