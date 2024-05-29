@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:fuerteads/screens/Home%20Page/Home.dart';
 import 'package:fuerteads/screens/Profile%20Page/Profile.dart';
 import 'package:fuerteads/screens/SubScription-Plan/sp.dart';
-import 'package:fuerteads/screens/homeScreen/findPatient.dart';
+import 'package:fuerteads/screens/findPatient.dart';
 import 'package:fuerteads/values/screen.dart';
 import 'package:fuerteads/values/values.dart';
 import 'package:fuerteads/widgets/navbar.dart';
@@ -13,18 +15,18 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class ResultPage extends StatefulWidget {
+class ResultWeb extends StatefulWidget {
   final String experience;
   final String location;
-  const ResultPage({super.key, required this.experience, required this.location});
+  const ResultWeb({super.key, required this.experience, required this.location});
 
   @override
-  State<ResultPage> createState() => _ResultPageState();
+  State<ResultWeb> createState() => _ResultWebState();
 }
 
-class _ResultPageState extends State<ResultPage> {
+class _ResultWebState extends State<ResultWeb> {
   final String mobile = "9724******";
-  RangeValues _values = RangeValues(1000.0, 10000.0);
+  RangeValues _values = RangeValues(0.0, 10000.0);
 
   List<Map<String, dynamic>> jobDataList = [
     {
@@ -137,12 +139,17 @@ class _ResultPageState extends State<ResultPage> {
                 scrolledUnderElevation: 0,
                 title: Row(
                   children: [
-                    Container(
-                      width: 150,
-                      padding: EdgeInsets.all(10),
-                      child: Image.asset(
-                        ImagePath.adsLogo,
-                        fit: BoxFit.fill,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+                      },
+                      child: Container(
+                        width: 150,
+                        padding: EdgeInsets.all(10),
+                        child: Image.asset(
+                          ImagePath.adsLogo,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -185,231 +192,234 @@ class _ResultPageState extends State<ResultPage> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20 * s.customWidth),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-                height: 80, //size.height * 0.1,
-                width: 1492,
-                decoration: BoxDecoration(color: Color.fromRGBO(249, 249, 249, 1), border: Border.all(color: Color.fromARGB(42, 0, 0, 0)), borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 20 * s.customWidth, right: 5 * s.customWidth),
-                      child: FaIcon(Icons.search_outlined),
-                    ),
-                    Container(
-                      width: size.width > 1000 ? null : 100,
-                      child: AutoSizeText(
-                        widget.experience, //"Driving Jobs",
-                        style: GoogleFonts.aBeeZee(fontSize: 15, color: black),
+            child: Container(
+              height: 80, //size.height * 0.1,
+              width: s.width,
+              decoration: BoxDecoration(color: Color.fromRGBO(249, 249, 249, 1), border: Border.all(color: Color.fromARGB(42, 0, 0, 0)), borderRadius: BorderRadius.circular(10)),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Container(
+                  width: 1480,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 20 * s.customWidth, right: 5 * s.customWidth),
+                        child: FaIcon(Icons.search_outlined),
                       ),
-                    ),
-                    SizedBox(
-                      width: 20 * s.customWidth,
-                    ),
-                    SizedBox(
-                      height: 30 * s.customHeight,
-                      child: VerticalDivider(
-                        color: Colors.grey,
-                        thickness: 2,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 40 * s.customWidth,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
-                      child: Icon(
-                        Icons.bus_alert,
-                        color: red,
-                      ),
-                    ),
-                    Container(
-                      width: 200,
-                      constraints: BoxConstraints(maxWidth: 250),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
+                      Container(
+                        width: size.width > 1000 ? null : 100,
                         child: AutoSizeText(
-                          overflow: TextOverflow.ellipsis,
-                          widget.location,
+                          widget.experience, //"Driving Jobs",
                           style: GoogleFonts.aBeeZee(fontSize: 15, color: black),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      width: 40 * s.customWidth,
-                    ),
-                    SizedBox(
-                      height: 30 * s.customHeight,
-                      child: VerticalDivider(
-                        color: Colors.grey,
-                        thickness: 2,
+                      SizedBox(
+                        width: 20 * s.customWidth,
                       ),
-                    ),
-                    SizedBox(
-                      width: 40 * s.customWidth,
-                    ),
-                    widget.experience == "Doctor" || widget.experience == "Nursing"
-                        ? buildCustomDropdownForm(
-                            items: [
-                                "1 Year",
-                                "2 Year",
-                                "3 Year",
-                                "4 Year",
-                                "5 Year",
-                                "6 Year",
-                                "7 Year",
-                                "8 Year",
-                                "9 Year",
-                                "10 Year",
-                                "11 Year",
-                                "12 Year",
-                                "13 Year",
-                                "14 Year",
-                                "15 Year",
-                                "16 Year",
-                                "17 Year",
-                                "18 Year",
-                                "19 Year",
-                                "20 Year",
-                                "21 Year",
-                                "22 Year",
-                                "23 Year",
-                                "24 Year",
-                                "25 Year",
-                              ],
-                            onChanged: (String? value) {
-                              print("object..................................$value");
-                            }).w(250)
-                        : Container(),
-                    widget.experience == "Nursing" || widget.experience == "Doctor"
-                        ? SizedBox(
-                            width: 40 * s.customWidth,
-                          )
-                        : Container(),
-                    widget.experience == "Nursing" || widget.experience == "Doctor"
-                        ? SizedBox(
-                            height: 30 * s.customHeight,
-                            child: VerticalDivider(
-                              color: Colors.grey,
-                              thickness: 2,
-                            ),
-                          )
-                        : Container(),
-                    widget.experience == "Nursing" || widget.experience == "Doctor"
-                        ? SizedBox(
-                            width: 40 * s.customWidth,
-                          )
-                        : Container(),
-                    widget.experience == "Nursing" || widget.experience == "Doctor"
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "\₹${_values.start.round()}",
-                                    style: GoogleFonts.poppins(fontSize: 15, color: black, fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    " Doctor Fees",
-                                    style: GoogleFonts.poppins(color: black, fontSize: 16, fontWeight: FontWeight.w500),
-                                  ),
-                                  Text(
-                                    "\₹${_values.end.round()}",
-                                    style: GoogleFonts.poppins(fontSize: 15, color: black, fontWeight: FontWeight.bold),
-                                  ),
+                      SizedBox(
+                        height: 30 * s.customHeight,
+                        child: VerticalDivider(
+                          color: Colors.grey,
+                          thickness: 2,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 40 * s.customWidth,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Icon(
+                          Icons.bus_alert,
+                          color: red,
+                        ),
+                      ),
+                      Container(
+                        width: 200,
+                        constraints: BoxConstraints(maxWidth: 250),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: AutoSizeText(
+                            overflow: TextOverflow.ellipsis,
+                            widget.location,
+                            style: GoogleFonts.aBeeZee(fontSize: 15, color: black),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 40 * s.customWidth,
+                      ),
+                      SizedBox(
+                        height: 30 * s.customHeight,
+                        child: VerticalDivider(
+                          color: Colors.grey,
+                          thickness: 2,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 40 * s.customWidth,
+                      ),
+                      widget.experience == "Doctor" || widget.experience == "Nursing"
+                          ? buildCustomDropdownForm(
+                              items: [
+                                  "1 Year",
+                                  "2 Year",
+                                  "3 Year",
+                                  "4 Year",
+                                  "5 Year",
+                                  "6 Year",
+                                  "7 Year",
+                                  "8 Year",
+                                  "9 Year",
+                                  "10 Year",
+                                  "11 Year",
+                                  "12 Year",
+                                  "13 Year",
+                                  "14 Year",
+                                  "15 Year",
+                                  "16 Year",
+                                  "17 Year",
+                                  "18 Year",
+                                  "19 Year",
+                                  "20 Year",
+                                  "21 Year",
+                                  "22 Year",
+                                  "23 Year",
+                                  "24 Year",
+                                  "25 Year",
                                 ],
-                              ).w(300),
-                              RangeSlider(
-                                values: _values,
-                                activeColor: Color.fromARGB(255, 27, 181, 253),
-                                onChanged: (values) {
-                                  setState(() {
-                                    _values = values;
-                                  });
-                                },
-                                min: 1000.0,
-                                max: 10000.0,
-                                divisions: (10000 - 1000) ~/ 100,
-                              ).wh(300, 20),
-                            ],
-                          )
-                        : Container(),
-                    10.widthBox,
-                    Expanded(child: Container()),
-                    Padding(
-                      padding: EdgeInsets.only(right: 20 * s.customWidth),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => FindPatient()),
-                          );
-                        },
-                        child: Container(
-                          height: 42 * s.customHeight,
-                          width: s.isDesktop ? 100 * s.customWidth : 100,
-                          decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(12)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Icon(
-                                  Icons.search_sharp,
-                                  size: 15,
-                                  color: Colors.white,
+                              onChanged: (String? value) {
+                                print("object..................................$value");
+                              }).w(250)
+                          : Container(),
+                      widget.experience == "Nursing" || widget.experience == "Doctor"
+                          ? SizedBox(
+                              width: 40 * s.customWidth,
+                            )
+                          : Container(),
+                      widget.experience == "Nursing" || widget.experience == "Doctor"
+                          ? SizedBox(
+                              height: 30 * s.customHeight,
+                              child: VerticalDivider(
+                                color: Colors.grey,
+                                thickness: 2,
+                              ),
+                            )
+                          : Container(),
+                      widget.experience == "Nursing" || widget.experience == "Doctor"
+                          ? SizedBox(
+                              width: 40 * s.customWidth,
+                            )
+                          : Container(),
+                      widget.experience == "Nursing" || widget.experience == "Doctor"
+                          ? Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "\₹${_values.start.round()}",
+                                      style: GoogleFonts.poppins(fontSize: 15, color: black, fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      " Doctor Fees",
+                                      style: GoogleFonts.poppins(color: black, fontSize: 16, fontWeight: FontWeight.w500),
+                                    ),
+                                    Text(
+                                      "\₹${_values.end.round()}",
+                                      style: GoogleFonts.poppins(fontSize: 15, color: black, fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ).w(300),
+                                RangeSlider(
+                                  values: _values,
+                                  activeColor: Color.fromARGB(255, 27, 181, 253),
+                                  onChanged: (values) {
+                                    setState(() {
+                                      _values = values;
+                                    });
+                                  },
+                                  min: 0.0,
+                                  max: 10000.0,
+                                  divisions: 100,
+                                ).wh(300, 20),
+                              ],
+                            )
+                          : Container(),
+                      10.widthBox,
+                      Expanded(child: Container()),
+                      Padding(
+                        padding: EdgeInsets.only(right: 20 * s.customWidth),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => FindPatient()),
+                            );
+                          },
+                          child: Container(
+                            height: 42 * s.customHeight,
+                            padding: EdgeInsets.only(right: 20 * s.customWidth, left: 20 * s.customWidth),
+                            decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(12)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Icon(
+                                    Icons.search_sharp,
+                                    size: 15,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              ),
-                              AutoSizeText(
-                                "Find Doctor",
-                                style: GoogleFonts.aBeeZee(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 20 * s.customWidth),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => ResultPage(
-                                experience: widget.experience,
-                                location: widget.location,
-                              ),
+                                AutoSizeText(
+                                  "Find Doctor",
+                                  style: GoogleFonts.aBeeZee(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                        child: Container(
-                          height: 42 * s.customHeight,
-                          width: s.isDesktop ? 100 * s.customWidth : 100,
-                          decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(12)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 5),
-                                child: Icon(
-                                  Icons.search_sharp,
-                                  size: 15,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              AutoSizeText(
-                                "Search",
-                                style: GoogleFonts.aBeeZee(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
-                              ),
-                            ],
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.only(right: 20 * s.customWidth),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => ResultWeb(
+                                  experience: widget.experience,
+                                  location: widget.location,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: 42 * s.customHeight,
+                            padding: EdgeInsets.only(right: 20 * s.customWidth, left: 20 * s.customWidth),
+                            decoration: BoxDecoration(color: Color.fromARGB(255, 27, 181, 253), borderRadius: BorderRadius.circular(12)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 5),
+                                  child: Icon(
+                                    Icons.search_sharp,
+                                    size: 15,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                AutoSizeText(
+                                  "Search",
+                                  style: GoogleFonts.aBeeZee(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

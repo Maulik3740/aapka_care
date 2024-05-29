@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fuerteads/screens/Profile%20Page/profile_mobile.dart';
-import 'package:fuerteads/screens/homeScreen/homePage.dart';
+import 'package:fuerteads/screens/Home%20Page/Home.dart';
 import 'package:fuerteads/utils/app_theme.dart' as app_theme;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: app_theme.lightThemeData,
       title: 'AAPKA CARE',
-      home: ProfileMobile(),
+      home: Home(),
     );
   }
 }

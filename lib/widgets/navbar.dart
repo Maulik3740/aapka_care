@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:fuerteads/screens/homeScreen/homePage.dart';
+import 'package:fuerteads/screens/Home%20Page/Home.dart';
+import 'package:fuerteads/screens/Home%20Page/home_web.dart';
 import 'package:fuerteads/values/screen.dart';
 import 'package:fuerteads/values/values.dart';
 import 'package:fuerteads/widgets/imageLink.dart';
@@ -44,7 +45,7 @@ class _NavBarState extends State<NavBar> {
                     onTap: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
+                        MaterialPageRoute(builder: (context) => Home()),
                       );
                     },
                     child: const Logo()),
